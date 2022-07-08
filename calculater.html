@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Web App – Simple Interest Calculator</title>
+<style>
+*{font-family:Arial, Helvetica, sans-serif;}
+th{font-size:40px; color:#333; padding-bottom:30px;}
+td{padding:5px;}
+td span.cd{background:#FC3;}
+body{background:#000;}
+.main{background:#fff; border-radius:20px; width:500px; padding:50px;}
+</style>
+</head>
+
+<body>
+<div class="main" id="calc">
+    
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+    <th colspan="2" align="center">Simple Interest calculator</th>
+  </tr>
+  <tr>
+    <td> <label for="a" class="f-label">Amount</label></td>
+    <td><input type="text" name="a" id="a" placeholder=""></td>
+  </tr>
+  <tr>
+    <td><label for="b" class="f-label">Interest Rate</label></td>
+    <td><input type="range" name="b" id="b" onChange="show_intrest_rate()" min="1" value="4.75" max="20" step="0.1"><span id="range-value">4.75%</span></td>
+  </tr>
+  <tr>
+    <td><label for="c" class="f-label">No Of Year</label></td>
+    <td><select name="c" id="c">
+            <option value="1">1</option>
+            <option value="2">2</option>
+             <option value="3">3</option>
+            <option value="4">4</option>
+             <option value="5">5</option>
+            <option value="6">6</option>
+             <option value="7">7</option>
+            <option value="8">8</option>
+             <option value="9">9</option>
+            <option value="10">10</option>
+          </select></td>
+  </tr>
+  <tr>
+    <td> <button onclick = "simple_interest()" >Comput Interest</button></td>
+    <td><div id="num"> </div></td>
+  </tr>
+
+  <tr>
+  <td colspan="2">if you deposit <span id="dd" class="cd">1000</span>,</td>
+  </tr>
+    <tr>
+  <td colspan="2">at an interest rate of <span id="dd1" class="cd">10</span>%,</td>
+  </tr>
+    <tr>
+  <td colspan="2">you will receive an amount of <span id="dd2" class="cd">1000</span>,</td>
+  </tr>
+    <tr>
+  <td colspan="2">in the year <span id="dd3" class="cd">2032</span></td>
+  </tr>
+    <tr>
+    <td colspan="2"><p></p></td>
+  </tr>
+    <tr>
+  <td colspan="2">&copy; Open Source Simple Interest Calculator By Kuldeep Sharma</td>
+  </tr>
+  
+
+
+
+</table>
+
+</div>
+<script type="text/javascript">
+function simple_interest()
+{
+var p,t,r,si,ci;
+p = document.getElementById ("a").value;
+if(p>0){
+t = document.getElementById ("c").value;
+r = document.getElementById ("b").value;
+si = parseInt((p*t*r)/100 );
+ci=(parseInt(new Date().getFullYear())+parseInt(t));
+document.getElementById ('dd').innerHTML =p;
+document.getElementById ('dd1').innerHTML =r;
+document.getElementById ('dd2').innerHTML =si;
+document.getElementById ('dd3').innerHTML =ci;
+document.getElementById ('num').innerHTML ="Simple interest : "+si;
+
+}else{
+	alert("Please Enter a Positive Value");
+	}
+}
+function show_intrest_rate()
+{
+var t;
+t = document.getElementById ("b").value;
+document.getElementById ('range-value').innerHTML =t+"%";
+}
+</script>
+</body>
+</html>
+
+
